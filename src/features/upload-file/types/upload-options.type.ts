@@ -84,6 +84,11 @@ export type UploadOptions = {
      */
     maxSize?: number,
   },
+  crop?: {
+    minCropBoxWidth?: number,
+    minCropBoxHeight?: number,
+    initialAspectRatio?: number,
+  }
 }
 
 export type UploadOptionsWithDefault = {

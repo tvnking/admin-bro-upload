@@ -16,7 +16,12 @@ type PropertyCustom = {
   mimeTypes?: Array<MimeType | string>,
   maxSize?: number,
   provider: string,
-  multiple: boolean,
+  multiple: boolean
+  crop?: {
+    minCropBoxWidth?: number,
+    minCropBoxHeight?: number,
+    initialAspectRatio?: number,
+  }
 }
 
 export default PropertyCustom

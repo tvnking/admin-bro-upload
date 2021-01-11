@@ -48,9 +48,13 @@ describe('uploadFileFeature', () => {
     }
 
     it('fills record with the path', async () => {
-      const response = { record: { params: {
-        [properties.key]: key,
-      } } }
+      const response = {
+        record: {
+          params: {
+            [properties.key]: key,
+          }
+        }
+      }
       const fillPath = getAfterHook({ provider, properties })
 
       const ret = await fillPath(
@@ -66,10 +70,14 @@ describe('uploadFileFeature', () => {
     it('gets bucket from the record when it is present', async () => {
       const bucket = 'some-other-bucket'
       properties.bucket = 'storedBucketProperty'
-      const response = { record: { params: {
-        [properties.key]: key,
-        [properties.bucket]: bucket,
-      } } }
+      const response = {
+        record: {
+          params: {
+            [properties.key]: key,
+            [properties.bucket]: bucket,
+          }
+        }
+      }
       const fillPath = getAfterHook({ provider, properties })
 
       await fillPath(
@@ -82,9 +90,13 @@ describe('uploadFileFeature', () => {
     })
 
     it('does nothing when path is not present', async () => {
-      const response = { record: { params: {
-        name: 'some value',
-      } } }
+      const response = {
+        record: {
+          params: {
+            name: 'some value',
+          }
+        }
+      }
       const fillPath = getAfterHook({ provider, properties })
 
       const ret = await fillPath(

@@ -81,6 +81,7 @@ const uploadFileFeature = (config: UploadOptions): FeatureType => {
     mimeTypes: validation?.mimeTypes,
     maxSize: validation?.maxSize,
     multiple: !!multiple,
+    crop: config.crop
   }
 
   const uploadFeature = buildFeature({
@@ -89,7 +90,9 @@ const uploadFileFeature = (config: UploadOptions): FeatureType => {
         custom,
         isVisible: { show: true, edit: true, list: true, filter: false },
         components: {
-          edit: AdminBro.bundle(
+          edit: config.crop ? AdminBro.bundle(
+            '../../../src/features/upload-file/components/edit-crop',
+          ) : AdminBro.bundle(
             '../../../src/features/upload-file/components/edit',
           ),
           list: AdminBro.bundle(
@@ -107,7 +110,8 @@ const uploadFileFeature = (config: UploadOptions): FeatureType => {
       },
       new: {
         before: stripFileFromPayload,
-        after: [updateRecord, fillPath] },
+        after: [updateRecord, fillPath]
+      },
       edit: {
         before: [stripFileFromPayload],
         after: [updateRecord, fillPath],
